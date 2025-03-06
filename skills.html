@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills to be Learned in CSE</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="skills.css">
+</head>
+
+<body>
+    <!-- Programming Symbols Background -->
+    <div id="symbols-container">
+        <div class="programming-symbol">{ }</div>
+        <div class="programming-symbol">&lt; &gt;</div>
+        <div class="programming-symbol">#</div>
+        <div class="programming-symbol">;</div>
+        <div class="programming-symbol">&amp;</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <!-- College Logo -->
+            <div class="logo">
+                <img src="https://www.pngfind.com/pngs/m/209-2090324_vignan-logo-hd-png-download.png" alt="College Logo">
+            </div>
+
+            <!-- Learning Platforms Dropdown -->
+            <!-- Update the dropdown section in the header -->
+            <div class="dropdown">
+                <button id="dropdown-btn">
+                    Learning Platforms
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <a href="https://leetcode.com" target="_blank">LeetCode</a>
+                    <a href="https://codechef.com" target="_blank">CodeChef</a>
+                    <a href="https://geeksforgeeks.org" target="_blank">GeeksforGeeks</a>
+                    <a href="https://coursera.org" target="_blank">Coursera</a>
+                    <a href="https://udemy.com" target="_blank">Udemy</a>
+                    <a href="https://pluralsight.com" target="_blank">Pluralsight</a>
+                    <a href="https://freecodecamp.org" target="_blank">freeCodeCamp</a>
+                    <a href="https://codecademy.com" target="_blank">Codecademy</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 id="main-title">Skills to be Learned in CSE</h1>
+            <div id="cse-logo">
+                <img src="cselogo.png" alt="CSE Logo">
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills">
+            <div class="container">
+                <div id="skills-container" class="skills-grid">
+                    <!-- Skills will be added dynamically via JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="career.html" class="career-link">Career Path after CSE →</a>
+        </div>
+    </footer>
+
+    <!-- Skill Popup -->
+    <div id="skill-popup" class="popup hidden">
+        <div class="popup-content">
+            <button id="close-popup" class="close-btn">×</button>
+            <h2 id="popup-title"></h2>
+            <image src="" class="image"></image>
+            <p id="popup-description"></p>
+            
+        </div>
+    </div>
+
+    <script src="skills.js"></script>
+</body>
+
+</html>

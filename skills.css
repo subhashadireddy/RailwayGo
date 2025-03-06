@@ -1,0 +1,465 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+header .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+}
+
+#dropdown-btn {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#dropdown-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    width: 250px;
+    background: rgba(26, 26, 46, 0.95);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transform-origin: top right;
+    transform: scale(0.95);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-menu.active {
+    transform: scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.dropdown-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: rgba(255, 255, 255, 0.1);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.dropdown-menu a:hover::before {
+    width: 100%;
+}
+
+.dropdown-menu a:hover {
+    transform: translateX(10px);
+    color: #60a5fa;
+}
+
+/* Career Path Page Styles */
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.career-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.image{
+    height:100px;
+    margin:10px;
+}
+.career-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.career-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #60a5fa, #93c5fd);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.career-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Career Popup Styles */
+.career-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.career-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.career-popup-content {
+    background: #16213e;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(50px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.career-popup.active .career-popup-content {
+    transform: translateY(0) scale(1);
+}
+.career-popup-content::-webkit-scrollbar {
+    display: none;
+}
+
+.salary-range {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.salary-list {
+    list-style: none;
+    padding: 0;
+}
+
+.salary-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.salary-list li:last-child {
+    border-bottom: none;
+}
+
+/* Main Content Styles */
+main {
+    padding-top: 64px;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+#main-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    opacity: 0;
+}
+
+#cse-logo {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    opacity: 0;
+}
+
+#cse-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+.skill-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 16px;
+    padding: 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    width: 100%;
+}
+
+.skill-button:hover {
+    background: #4682B4;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Styles */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.popup.active {
+    opacity: 11;
+    visibility: visible;
+}
+
+.popup-content {
+    background: #16213e;
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+    transform: translateY(50px);
+    transition: transform 0.3s ease;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height:80%;
+    overflow-y: auto;
+}
+.popup-content .image {
+        width: 80%;
+        max-width: 300px;
+        height: 75%;
+        display: block;
+        margin: 10px auto;
+        border-radius: 10px;
+}
+.popup-content::-webkit-scrollbar{
+    display:none;
+}
+.popup.active .popup-content {
+    transform: translateY(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+footer .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.career-link {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+
+.career-link:hover {
+    color: #93c5fd;
+}
+
+/* Programming Symbols Animation */
+#symbols-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.programming-symbol {
+    position: absolute;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.381);
+    animation: float 20s infinite;
+}
+.career-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+}
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f9eeee04;
+    /* Red background */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.close-popup:hover {
+    background-color: #faf1f189;
+    /* Darker red on hover */
+}
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(var(--x), var(--y)) rotate(var(--rotation));
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none ;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #main-title {
+        font-size: 2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .popup-content {
+        margin: 1rem;
+    }
+}

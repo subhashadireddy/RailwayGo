@@ -1,0 +1,383 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fce8f3, #ffffff, #e8f4fc);
+    min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo, .college-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.nav-brand span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.nav-item:hover {
+    color: #4169e1;
+}
+
+/* Hero Section Styles */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.train-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 100px;
+    margin-bottom: 2rem;
+}
+
+.train {
+    position: absolute;
+    width: 200px;
+    animation: moveTrain 10s linear infinite;
+}
+
+@keyframes moveTrain {
+    0% {
+        right: -200px;
+    }
+
+    100% {
+        right: 100%;
+    }
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #f8b071;
+    margin-bottom: 2rem;
+}
+
+.location-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.location-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Sidebar Buttons Styles */
+.sidebar-buttons {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 100;
+}
+
+.sidebar-btn {
+    position: absolute;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    /* background: linear-gradient(to right, #a18cd1, #fbc2eb); */
+    color: white;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.3s;
+}
+
+.sidebar-btn.left {
+    left: -60px;
+    background: linear-gradient(to right, #a18cd1, #fbc2eb);
+}
+
+.sidebar-btn.right {
+    right: -79px;
+    background: linear-gradient(to right,  #fbc2eb, #a18cd1);
+}
+/* Content Section Styles */
+#what-we-do,
+#how-to-use,
+#about {
+    padding: 5rem 0;
+}
+
+.content-left, .content-right {
+    flex: 1;
+    padding: 4rem;
+}
+
+.section-image {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Team Section Styles */
+.team {
+    padding: 5rem 2rem;
+    background: rgb(239, 232, 232);
+}
+
+.team h2 {
+    text-decoration:underline;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-member {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-left:1.5em;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+
+.team-member img:hover {
+    transform: scale(1.05);
+}
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.team-member h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-member p {
+    text-align: center;
+    color: #666;
+}
+
+
+/* Footer Styles */
+.footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 4rem 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: #999;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: white;
+}
+.copywrite {
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+        gap: 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .sidebar-btn {
+        padding: 0.8rem 1.5rem;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+    #what-we-do .container, #how-to-use .container, #about .container {
+        flex-direction: column;
+    }
+    .content-left, .content-right {
+        width: 100%;
+    }
+}
+
+/* Additional styles for new sections */
+#what-we-do .container, #how-to-use .container, #about .container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+#what-we-do ul, #about ul {
+    list-style-type: none;
+    padding-left: 1rem;
+}
+
+#what-we-do ul li, #about ul li {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+#what-we-do ul li::before, #about ul li::before {
+    content: "•";
+    color: #ff6b6b;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+#how-to-use ol {
+    padding-left: 1.5rem;
+}
+
+#how-to-use ol li {
+    margin-bottom: 0.5rem;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
