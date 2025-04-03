@@ -52,21 +52,21 @@ const teamMembers = [
         roll: '23L31A0504',
         email: 'subhashadireddy@gmail.com',
         linkedin: 'https://www.linkedin.com/in/subhash-adireddy-5035132a0/',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShYwM33sSN7MtnLIq0k1qjhpoEtSstLE26gA&s'
+        image: 'subhash.jpeg'
     },
     {
         name: 'AAJADH P',
         roll: '23L31A0501',
         email: 'azadpanigrahi469@gmail.com',
-        linkedin: 'https://linkedin.com',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShYwM33sSN7MtnLIq0k1qjhpoEtSstLE26gA&s'
+        linkedin: 'https://www.linkedin.com/in/aajadh/',
+        image: 'azad.jpeg'
     },
     {
         name: 'B GAYATHRI',
         roll: '23L31A0517',
         email: 'gayathriballa108@gmail.com',
         linkedin: 'https://www.linkedin.com/in/gayathri-balla-1397a3324/',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShYwM33sSN7MtnLIq0k1qjhpoEtSstLE26gA&s'
+        image: 'gayathri.jpeg'
     },
     {
         name: 'CHARAN B',
@@ -79,8 +79,8 @@ const teamMembers = [
         name: 'TARUN B',
         roll: '23L31A0532',
         email: 'member5@railway.go',
-        linkedin: 'https://linkedin.com',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShYwM33sSN7MtnLIq0k1qjhpoEtSstLE26gA&s'
+        linkedin: 'https://www.linkedin.com/in/venkat-sai-tarun-1880a5296/',
+        image: 'tarun.jpeg'
     },
     {
         name: 'PRAVEEN',
