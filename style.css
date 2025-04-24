@@ -381,3 +381,15 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+#view-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+#view-counter i {
+  color: #999;
+}

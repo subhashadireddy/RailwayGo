@@ -1,3 +1,20 @@
+// View Counter
+document.addEventListener("DOMContentLoaded", async () => {
+    const viewCounterElement = document.getElementById("view-counter")
+
+    try {
+        const response = await fetch("/api/views")
+        if (!response.ok) {
+            throw new Error("Failed to fetch view count")
+        }
+
+        const data = await response.json()
+        viewCounterElement.innerHTML = `<i class="fas fa-eye"></i> ${data.views.toLocaleString()} views`
+    } catch (error) {
+        console.error("Error fetching view count:", error)
+        viewCounterElement.innerHTML = '<i class="fas fa-eye"></i> -- views'
+    }
+})
 // Initialize GSAP
 gsap.registerPlugin(ScrollTrigger);
 
