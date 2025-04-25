@@ -132,7 +132,7 @@ const teamMembers = [
         roll: '24L35A0505',
         email: 'member6@railway.go',
         linkedin: 'https://linkedin.com',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShYwM33sSN7MtnLIq0k1qjhpoEtSstLE26gA&s'
+        image: 'praveen.jpg'
     }
 ];
 
