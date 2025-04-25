@@ -1,20 +1,21 @@
-// View Counter
+// GoatCounter View Display
 document.addEventListener("DOMContentLoaded", async () => {
-    const viewCounterElement = document.getElementById("view-counter")
+    const viewCounterElement = document.getElementById("view-counter");
 
     try {
-        const response = await fetch("/api/views")
-        if (!response.ok) {
-            throw new Error("Failed to fetch view count")
-        }
+  
+        const response = await fetch("https://railwaygo.goatcounter.com/counter//total.json");
+        const data = await response.json();
 
-        const data = await response.json()
-        viewCounterElement.innerHTML = `<i class="fas fa-eye"></i> ${data.views.toLocaleString()} views`
+        // The total count is the sum of all page views
+        const totalViews = data.paths.reduce((sum, path) => sum + path.count, 0);
+
+        viewCounterElement.innerHTML = `<i class="fas fa-eye"></i> ${totalViews.toLocaleString()} views`;
     } catch (error) {
-        console.error("Error fetching view count:", error)
-        viewCounterElement.innerHTML = '<i class="fas fa-eye"></i> -- views'
+        console.error("Error fetching view count:", error);
+        viewCounterElement.innerHTML = '<i class="fas fa-eye"></i> -- views';
     }
-})
+});
 // Initialize GSAP
 gsap.registerPlugin(ScrollTrigger);
 
