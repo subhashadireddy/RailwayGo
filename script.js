@@ -16,6 +16,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         viewCounterElement.innerHTML = '<i class="fas fa-eye"></i> -- views';
     }
 });
+// Client-side view counter with LocalStorage backup
+document.addEventListener("DOMContentLoaded", () => {
+    const viewCounterElement = document.getElementById("view-counter");
+
+    // Function to get and update the view count
+    function updateViewCount() {
+        // Try to get the current count from localStorage
+        let count = parseInt(localStorage.getItem('page_views') || '0');
+
+        // Check if this is a new session
+        const lastVisit = localStorage.getItem('last_visit');
+        const now = new Date().toDateString();
+
+        if (lastVisit !== now) {
+            // This is a new day/session, increment the counter
+            count++;
+            localStorage.setItem('page_views', count.toString());
+            localStorage.setItem('last_visit', now);
+        }
+
+        // Display the count
+        viewCounterElement.innerHTML = `<i class="fas fa-eye"></i> ${count.toLocaleString()} views`;
+    }
+
+    // Update the view count
+    updateViewCount();
+});
 // Initialize GSAP
 gsap.registerPlugin(ScrollTrigger);
 
