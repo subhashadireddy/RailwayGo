@@ -116,22 +116,22 @@ const teamMembers = [
     {
         name: 'CHARAN B',
         roll: '23L31A0522',
-        email: 'member4@railway.go',
-        linkedin: 'https://linkedin.com',
+        email: 'charansaiprabhakumarbheesetty@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/bheesetty-charan-sai-prabha-kumar-094719321/',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShYwM33sSN7MtnLIq0k1qjhpoEtSstLE26gA&s'
     },
     {
         name: 'TARUN B',
         roll: '23L31A0532',
-        email: 'member5@railway.go',
+        email: 'scs246319@gmail.com',
         linkedin: 'https://www.linkedin.com/in/venkat-sai-tarun-1880a5296/',
         image: 'tarun.jpeg'
     },
     {
         name: 'PRAVEEN',
         roll: '24L35A0505',
-        email: 'member6@railway.go',
-        linkedin: 'https://linkedin.com',
+        email: 'praveendarmavarapu@gmail.com',
+        linkedin: 'https://www.linkedin.com/in/praveen-dharmavarapu-2612b3285/',
         image: 'praveen.jpg'
     }
 ];
