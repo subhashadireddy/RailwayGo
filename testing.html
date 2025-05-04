@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Transmission UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f0f;
+            color: #00ff88;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            gap: 30px;
+        }
+
+        .terminal-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .terminal-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        .terminal {
+            position: relative;
+            border: 2px solid #00ff88;
+            padding: 30px;
+            width: 95%;
+            height: 90%;
+            max-width: 1200px;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+            font-size: 1.5rem;
+            font-weight: 700;
+            white-space: pre-wrap;
+            overflow-y: auto;
+            background: rgba(15, 15, 15, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
+            z-index: 2;
+        }
+
+        .terminal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 13px 13px 0 0;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #00ff88;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .video-section {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            margin-top: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .video-section video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-container:hover .video-controls {
+            opacity: 1;
+        }
+
+        /* Updated Carousel Styles */
+        .carousel-container {
+            position: relative;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 600px;
+            /* Reduced size */
+            height: 500px;
+            /* Fixed height */
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit:contain;
+            border-radius: 15px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: #00ff88;
+            transform: scale(1.2);
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 255, 136, 0.2);
+            border: 2px solid rgba(0, 255, 136, 0.6);
+            padding: 12px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            font-size: 1rem;
+            color: #00ff88;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 255, 136, 0.4);
+        }
+
+        .arrow.left {
+            left: 15px;
+        }
+
+        .arrow.right {
+            right: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .terminal {
+                font-size: 1.2rem;
+                padding: 25px;
+            }
+
+            .arrow {
+                font-size: 0.9rem;
+                padding: 8px;
+            }
+
+            .carousel-container {
+                max-width: 90%;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terminal {
+                font-size: 1rem;
+                padding: 20px;
+                height: 85%;
+            }
+
+            .arrow {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+
+            .carousel-container {
+                height: 200px;
+            }
+
+            .indicator {
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        .terminal-icon {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            border: 2px solid rgba(0, 255, 136, 0.5);
+            object-fit: cover;
+            z-index: 3;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Terminal Text -->
+        <div class="terminal-container">
+            <div class="terminal-background"></div>
+            <div class="terminal">
+                <img src="vignan-logo.png" alt="Terminal Icon" class="terminal-icon" />
+                <div id="typewriter-text"></div>
+                <span class="cursor"></span>
+            </div>
+        </div>
+
+        <!-- Video Section (Local Video) -->
+        <div class="video-section">
+            <div class="video-container">
+                <video id="local-video" controls>
+                    <!-- Replace 'your-video.mp4' with the path to your local video file -->
+                    <source src="working-vedio.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <!-- Updated Image Carousel -->
+        <div class="carousel-container">
+            <button class="arrow left" onclick="prevSlide()">&#8592;</button>
+            <div class="carousel" id="carousel">
+                <!-- Replace with your own 10 images -->
+                <div class="carousel-slide" data-index="0">
+                    <img src="station_front_view.webp" alt="Image 1" />
+                </div>
+                <div class="carousel-slide" data-index="1">
+                    <img src="rail1.jpg" alt="Image 2" />
+                </div>
+                <div class="carousel-slide" data-index="2">
+                    <img src="fullMap.svg" alt="Image 3" />
+                </div>
+                <div class="carousel-slide" data-index="3">
+                    <img src="rail2.avif" alt="Image 4" />
+                </div>
+                <div class="carousel-slide" data-index="4">
+                    <img src="rail3.jpg" alt="Image 5" />
+                </div>
+                <div class="carousel-slide" data-index="5">
+                    <img src="app-scanner.jpg" alt="Image 6" />
+                </div>
+                <div class="carousel-slide" data-index="6">
+                    <img src="app1.jpg" alt="Image 7" />
+                </div>
+                <div class="carousel-slide" data-index="7">
+                    <img src="app2.jpg" alt="Image 8" />
+                </div>
+                <div class="carousel-slide" data-index="8">
+                    <img src="1.jpg" alt="Image 9" />
+                </div>
+                <div class="carousel-slide" data-index="9">
+                    <img src="https://cdn-icons-png.flaticon.com/512/231/231167.png" alt="Image 10" />
+                </div>
+            </div>
+            <button class="arrow right" onclick="nextSlide()">&#8594;</button>
+            <div class="carousel-indicators" id="carousel-indicators"></div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        const lines = [
+            "Welcome to RailwayGo......!",
+            "The primary motivation behind RailwayGo is to simplify and streamline the navigation experience for railway passengers, saving them time and effort....",
+            " Long journeys make finding the correct exit overwhelming.",
+            "RailwayGo is a mobile application designed to assist railway passengers in navigating unfamiliar train stations by providing personalized exit gate guidance....",
+            "Thank you for choosing our Website--Team @RailwayGo",
+        ];
+
+        let currentLine = 0;
+        let currentChar = 0;
+        let typingInterval;
+
+        function typeLine() {
+            const element = document.getElementById('typewriter-text');
+            if (currentLine < lines.length) {
+                if (currentChar < lines[currentLine].length) {
+                    element.textContent += lines[currentLine].charAt(currentChar);
+                    currentChar++;
+                    typingInterval = setTimeout(typeLine, 50);
+                } else {
+                    element.textContent += '\n';
+                    currentLine++;
+                    currentChar = 0;
+                    typingInterval = setTimeout(typeLine, 500);
+                }
+            }
+        }
+
+        window.onload = function () {
+            typeLine();
+            setupCarousel();
+        };
+
+        // Updated Carousel Logic
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalImages = slides.length;
+
+        function setupCarousel() {
+            // Create indicators
+            const indicatorsContainer = document.getElementById('carousel-indicators');
+            for (let i = 0; i < totalImages; i++) {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                indicator.setAttribute('data-index', i);
+                indicator.addEventListener('click', () => goToSlide(i));
+                indicatorsContainer.appendChild(indicator);
+            }
+
+            // Set initial active slide
+            updateCarousel();
+
+            // Auto-play carousel
+            setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+
+        function updateCarousel() {
+            // Update slides
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentIndex) {
+                    slide.classList.add('active');
+                }
+            });
+
+            // Update indicators
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.remove('active');
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                }
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
+
+        // Add keyboard navigation for carousel
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+
+        // Video player setup for local video
+        const video = document.getElementById('local-video');
+
+        // You can add custom video controls here if needed
+        video.addEventListener('loadedmetadata', () => {
+            console.log('Video loaded successfully');
+        });
+    </script>
+</body>
+
+</html>

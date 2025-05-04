@@ -55,7 +55,7 @@ body {
 .nav-item {
     text-decoration: none;
     color: #333;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: color 0.3s;
 }
 
@@ -128,6 +128,21 @@ body {
 
 .location-btn:hover {
     transform: translateY(-2px);
+}
+.working-button {
+        padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(to right, #a8f023, #32a541);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s;
+        
+}
+
+.working-button:hover {
+    transform: translateX(5px);
 }
 
 /* Sidebar Buttons Styles */
@@ -380,16 +395,4 @@ body {
 .fade-in-section.fade-in {
     opacity: 1;
     transform: translateY(0);
-}
-#view-counter {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #999;
-}
-
-#view-counter i {
-    color: #999;
 }
