@@ -118,7 +118,7 @@ const teamMembers = [
         roll: '23L31A0522',
         email: 'charansaiprabhakumarbheesetty@gmail.com',
         linkedin: 'https://www.linkedin.com/in/bheesetty-charan-sai-prabha-kumar-094719321/',
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShYwM33sSN7MtnLIq0k1qjhpoEtSstLE26gA&s'
+        image: 'charan.jpg'
     },
     {
         name: 'TARUN B',
